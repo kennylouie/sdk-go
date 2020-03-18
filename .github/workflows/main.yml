@@ -8,7 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: setup-ops
+      run: |
+        npm install -g @cto.ai/ops
+        ops account:signin -u ${{ secrets.OPS_USER }} -p ${{ secrets.OPS_PW }}
     - name: tests
       run: |
-        echo $GITHUB_REF
-        echo ${GITHUB_REF##*/}
+        echo ${GITHUB_REF#refs/heads/}
+        ops run @kennylouie/go-repo-version-checker:0.1.0 --repo https://github.com/kennylouie/sdk-go.git --branch ${GITHUB_REF#refs/heads/}
+      docker run --rm alpine:latest echo test
+      docker run --rm -it alpine:latest echo test
