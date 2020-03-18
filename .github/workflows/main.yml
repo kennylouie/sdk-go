@@ -17,7 +17,8 @@ jobs:
         ops account:signin -u ${{ secrets.OPS_USER }} -p ${{ secrets.OPS_PW }}
     - name: tests
       run: |
+        echo starting
+        echo "${GITHUB_REF##/*}"
         ops run @kennylouie/go-repo-version-checker:0.1.0 --repo https://github.com/kennylouie/sdk-go.git --branch "${GITHUB_REF##/*}"
-    - name: testing
-      run: |
+        ops run @kenny_onboarding/exit:0.1.0
         docker run --rm alpine:latest echo test
