@@ -10,7 +10,5 @@ jobs:
     steps:
     - name: tests
       run: |
-        echo $GITHUB_WORKFLOW
         echo $GITHUB_REF
-        echo ${GITHUB_REF##/*}
-        echo ${GITHUB_REF%%/*}
+        echo ${GITHUB_REF##*/}
