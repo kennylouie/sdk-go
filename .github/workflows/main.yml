@@ -18,4 +18,4 @@ jobs:
         ops account:signin -u ${{ secrets.OPS_USER }} -p ${{ secrets.OPS_PW }}
     - name: tests
       run: |
-        ops run @kennylouie/sdk-go-cicd:0.1.0 --repo https://github.com/kennylouie/sdk-go.git --branch "${GITHUB_REF##/*}"
+        ops run @kennylouie/go-repo-version-checker:0.1.0 --repo https://github.com/kennylouie/sdk-go.git --branch "${GITHUB_REF##/*}"
