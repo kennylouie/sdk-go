@@ -19,5 +19,5 @@ jobs:
       run: |
         echo ${GITHUB_REF#refs/heads/}
         ops run @kennylouie/go-repo-version-checker:0.1.0 --repo https://github.com/kennylouie/sdk-go.git --branch ${GITHUB_REF#refs/heads/}
-      docker run --rm alpine:latest echo test
-      docker run --rm -it alpine:latest echo test
+        docker run --rm alpine:latest echo test
+        docker run --rm -it alpine:latest echo test
